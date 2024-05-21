@@ -45,7 +45,7 @@ public class ToDoListController {
     @DeleteMapping("/tasks/{id}")
     public ResponseEntity<ToDoListResponse> delete(@PathVariable("id") int id){
         ToDoList task = toDoListService.delete(id);
-        ToDoListResponse body = new ToDoListResponse("user deleted");
+        ToDoListResponse body = new ToDoListResponse("task deleted");
         return ResponseEntity.ok(body);
     }
 }
