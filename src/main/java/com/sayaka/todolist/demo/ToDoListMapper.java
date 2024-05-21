@@ -20,5 +20,7 @@ public interface ToDoListMapper {
     @Update("UPDATE todolist SET title = #{title}, description = #{description}, status = #{status} WHERE id = #{id}")
     void update(ToDoList task);
 
+    @Delete("DELETE FROM todolist WHERE id = #{id}")
+    void delete(int id);
 
 }
