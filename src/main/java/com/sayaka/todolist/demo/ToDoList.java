@@ -1,12 +1,12 @@
 package com.sayaka.todolist.demo;
 
 public class ToDoList {
-    private int id;
+    private Integer id;
     private String title;
     private String description;
     private Boolean status;
 
-    public ToDoList(int id, String title, String description, Boolean status) {
+    public ToDoList(Integer id, String title, String description, Boolean status) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -43,5 +43,9 @@ public class ToDoList {
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public static ToDoList creatTask(String title, String description, Boolean status) {
+        return new ToDoList(null, title, description, status);
     }
 }
