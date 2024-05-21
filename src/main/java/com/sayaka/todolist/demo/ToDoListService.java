@@ -16,4 +16,11 @@ public class ToDoListService {
         List<ToDoList> Lists = toDoListMapper.findAll();
         return Lists;
     }
+
+    public ToDoList insert(String title, String description, Boolean status){
+        ToDoList task = ToDoList.creatTask(title, description, status);
+        toDoListMapper.insert(task);
+        return task;
+    }
+
 }
