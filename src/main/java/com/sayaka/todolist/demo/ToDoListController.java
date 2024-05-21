@@ -17,6 +17,11 @@ public class ToDoListController {
         this.toDoListService = toDoListService;
     }
 
+    @GetMapping("/tasks/{id}")
+    public ToDoList getTask(@PathVariable("id") Integer id) {
+        return toDoListService.findTask(id);
+    }
+
     @GetMapping("/todolist")
     public List<ToDoList> getLists(){
         return toDoListService.findAllTodolist();
@@ -28,5 +33,12 @@ public class ToDoListController {
         URI location = uriBuilder.path("/tasks/{id}").buildAndExpand(task.getId()).toUri();
         ToDoListResponse body = new ToDoListResponse("task created");
         return ResponseEntity.created(location).body(body);
+    }
+
+    @PatchMapping("/tasks/{id}")
+    public ResponseEntity<ToDoListResponse> update( @PathVariable("id") int id, @RequestBody @Validated ToDoListRequest taskRequest) {
+        ToDoList task = toDoListService.update(id, taskRequest.getTitle(),taskRequest.getDescription(),taskRequest.getStatus());
+        ToDoListResponse body = new ToDoListResponse("task updated");
+        return ResponseEntity.ok(body);
     }
 }
