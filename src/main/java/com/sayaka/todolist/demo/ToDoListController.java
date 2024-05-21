@@ -17,6 +17,11 @@ public class ToDoListController {
         this.toDoListService = toDoListService;
     }
 
+    @GetMapping("/tasks/{id}")
+    public ToDoList getTask(@PathVariable("id") Integer id) {
+        return toDoListService.findTask(id);
+    }
+
     @GetMapping("/todolist")
     public List<ToDoList> getLists(){
         return toDoListService.findAllTodolist();
