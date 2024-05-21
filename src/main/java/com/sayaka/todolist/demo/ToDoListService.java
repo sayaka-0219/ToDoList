@@ -24,7 +24,7 @@ public class ToDoListService {
         if (task.isPresent()) {
             return task.get();
         } else {
-            throw new UserNotExistException("task not found");
+            throw new NotFoundException("task not found");
         }
     }
 
@@ -34,4 +34,12 @@ public class ToDoListService {
         return task;
     }
 
+    public ToDoList update(Integer id, String title, String description, Boolean stutas) {
+        ToDoList task = toDoListMapper.findById(id).orElseThrow(() -> new NotFoundException("task not found with id: " + id));
+        task.setTitle(title);
+        task.setDescription(description);
+        task.setStatus(stutas);
+        toDoListMapper.update(task);
+        return task;
+    }
 }

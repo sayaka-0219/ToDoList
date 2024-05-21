@@ -17,4 +17,8 @@ public interface ToDoListMapper {
     @Options (useGeneratedKeys = true, keyProperty = "id")
     void insert(ToDoList task);
 
+    @Update("UPDATE todolist SET title = #{title}, description = #{description}, status = #{status} WHERE id = #{id}")
+    void update(ToDoList task);
+
+
 }

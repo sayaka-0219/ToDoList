@@ -34,4 +34,11 @@ public class ToDoListController {
         ToDoListResponse body = new ToDoListResponse("task created");
         return ResponseEntity.created(location).body(body);
     }
+
+    @PatchMapping("/tasks/{id}")
+    public ResponseEntity<ToDoListResponse> update( @PathVariable("id") int id, @RequestBody @Validated ToDoListRequest taskRequest) {
+        ToDoList task = toDoListService.update(id, taskRequest.getTitle(),taskRequest.getDescription(),taskRequest.getStatus());
+        ToDoListResponse body = new ToDoListResponse("task updated");
+        return ResponseEntity.ok(body);
+    }
 }

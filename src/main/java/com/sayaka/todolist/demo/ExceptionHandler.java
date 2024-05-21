@@ -15,9 +15,9 @@ import java.util.Map;
 @RestControllerAdvice
 public class ExceptionHandler {
 
-    @org.springframework.web.bind.annotation.ExceptionHandler(value = UserNotExistException.class)
+    @org.springframework.web.bind.annotation.ExceptionHandler(value = NotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotExistException(
-            UserNotExistException e, HttpServletRequest request) {
+            NotFoundException e, HttpServletRequest request) {
         Map<String, String> body = Map.of(
                 "timestamp", ZonedDateTime.now().toString(),
                 "status", String.valueOf(HttpStatus.NOT_FOUND.value()),
