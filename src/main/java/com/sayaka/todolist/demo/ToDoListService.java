@@ -42,4 +42,10 @@ public class ToDoListService {
         toDoListMapper.update(task);
         return task;
     }
+
+    public ToDoList delete(int id){
+        ToDoList task = toDoListMapper.findById(id).orElseThrow(() -> new NotFoundException("task not found with id: " + id));
+        toDoListMapper.delete(id);
+        return task;
+    }
 }
