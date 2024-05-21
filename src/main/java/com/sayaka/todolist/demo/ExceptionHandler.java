@@ -2,19 +2,18 @@ package com.sayaka.todolist.demo;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@RestControllerAdvice
-public class EceptionHandler {
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+@RestControllerAdvice
+public class ExceptionHandler {
+
+    @org.springframework.web.bind.annotation.ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         List<Map<String, String>> errors = new ArrayList<>();
         e.getBindingResult().getFieldErrors().forEach(fieldError -> {
